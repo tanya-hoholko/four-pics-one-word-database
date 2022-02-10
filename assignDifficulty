@@ -1,0 +1,17 @@
+#!/bin/bash
+txt=$(<list.txt)
+t="$txt"
+names=$(echo $t | tr ";" "\n")
+
+for eachname in $names
+do
+	echo $eachname
+	c=${eachname::1}
+	if [ c="1" ] || [ c="2" ] || [ c="0" ]
+	then
+	  	removedTwoChars="${eachname:2}"
+		mv Levels/$removedTwoChars Levels/$eachname
+		echo "$removedTwoChars"+"   "+"$eachname"
+	fi
+	
+done
